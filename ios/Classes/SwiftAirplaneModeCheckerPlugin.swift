@@ -29,6 +29,10 @@ public class SwiftAirplaneModeCheckerPlugin: NSObject, FlutterPlugin {
 
 
       func checkAirplaneMode(completion: @escaping (String) -> Void){
+          guard #available(iOS 12, *) else {
+            completion("OFF")
+            return
+          }
           let monitor = NWPathMonitor()
           var msg: String = ""
 
@@ -36,13 +40,13 @@ public class SwiftAirplaneModeCheckerPlugin: NSObject, FlutterPlugin {
           monitor.pathUpdateHandler = { path in
               if path.availableInterfaces.count == 0{
                   msg = "ON"
-                  print("Flight Mode")
+             
                   monitor.cancel()
 
               }
               else {
                   msg = "OFF"
-                  print("Not Flight Mode")
+                  
                   monitor.cancel()
 
               }
