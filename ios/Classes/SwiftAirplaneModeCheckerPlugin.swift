@@ -2,7 +2,7 @@ import Flutter
 import UIKit
 import Network
 
-@available(iOS 12.0, *)
+
 public class SwiftAirplaneModeCheckerPlugin: NSObject, FlutterPlugin {
   public static func register(with registrar: FlutterPluginRegistrar) {
     let channel = FlutterMethodChannel(name: "airplane_mode_checker", binaryMessenger: registrar.messenger())
